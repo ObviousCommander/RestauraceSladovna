@@ -18,6 +18,8 @@ class Menicka
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $datum = null;
+
+    
     //----Sloupec----
     //----Propojení----
     #[ORM\OneToMany(targetEntity: PolozkaMenicka::class, mappedBy: 'menicka', cascade: ['persist', 'remove'], orphanRemoval: true)]
@@ -61,19 +63,14 @@ class Menicka
 
     public function addPolozkaMenicka(PolozkaMenicka $polozkaMenicka): self
     {
-        if (!$this->polozkaMenicka->contains($polozkaMenicka)) {
-            $this->polozkaMenicka[] = $polozkaMenicka;
-            $polozkaMenicka->setMenicka($this);
-        }
+        $this->polozkaMenicka->add($polozkaMenicka);
 
         return $this;
     }
 
-    public function removePolozkaMenicka(PolozkaMenicka $polozkaMenickaKOdstraneni): self
+    public function removePolozkaMenicka(PolozkaMenicka $polozkaMenicka): self
     {
-        if ($this->polozkaMenicka->contains($polozkaMenickaKOdstraneni)) {
-            $this->polozkaMenicka->removeElement($polozkaMenickaKOdstraneni);
-        }
+        $this->polozkaMenicka->removeElement($polozkaMenicka);
 
         return $this;
     }

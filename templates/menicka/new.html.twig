@@ -1,0 +1,24 @@
+{# templates/menicka/new.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Nové Menu{% endblock %}
+
+{% block body %}
+    <h1>Nové Menu</h1>
+
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.datum) }}
+            {{ form_widget(form.datum, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.polozkaMenicka) }}
+            <div id="menicka_polozkaMenicka">
+                <div id="polozka_template" data-prototype="{{ form_widget(form.polozkaMenicka.vars.prototype)|raw }}">
+                    <!-- Dynamicky generované položky formuláře se zobrazí zde -->
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

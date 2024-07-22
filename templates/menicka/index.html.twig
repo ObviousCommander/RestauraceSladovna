@@ -2,38 +2,30 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MenickaController!{% endblock %}
+{% block title %}Hello MenickaController!
+{% endblock %}
 
 {% block body %}
-{% dump(data) %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	{% dump(data) %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/obviouscommander/RestauraceSladek/src/Controller/MenickaController.php'|file_link(0) }}">src/Controller/MenickaController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/obviouscommander/RestauraceSladek/templates/menicka/index.html.twig'|file_link(0) }}">templates/menicka/index.html.twig</a></code></li>
-    </ul>
-
-    <h2>Aktualni Menicka</h2>
-    <ul>
-        {% for menicka in data %}
-            <li>
-                <strong>ID:</strong> {{ menicka.id }}<br>
-                <strong>Datum:</strong> {{ menicka.datum|date('Y-m-d') }}<br>
-                <strong>Polozky:</strong>
-                <ul>
-                    {% for polozka in menicka.polozkaMenicka %}
-                        <li>{{ polozka.jidla.nazev }} (Cena: {{ polozka.jidla.cena }})</li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+	<h1>Aktualni Menicka</h1>
+	<ul>
+		{% for menicka in data %}
+			<li>
+				<strong>ID:</strong>
+				{{ menicka.id }}<br>
+				<strong>Datum:</strong>
+				{{ menicka.datum|date('Y-m-d') }}<br>
+				<strong>Polozky:</strong>
+				<ul>
+					{% for polozka in menicka.polozkaMenicka %}
+						<li>{{ polozka.jidla.nazev }}
+							(Cena:
+							{{ polozka.jidla.cena }})</li>
+					{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+	</ul>
 {% endblock %}

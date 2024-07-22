@@ -51,6 +51,8 @@ class JidlaRepository extends ServiceEntityRepository
         }
         return $jidla;
     }
+
+
 //    /**
 //     * @return Jidla[] Returns an array of Jidla objects
 //     */

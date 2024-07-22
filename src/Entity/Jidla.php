@@ -75,19 +75,14 @@ class Jidla
 
     public function addPolozkaMenicka(PolozkaMenicka $polozkaMenicka): self
     {
-        if (!$this->polozkaMenicka->contains($polozkaMenicka)) {
-            $this->polozkaMenicka[] = $polozkaMenicka;
-            $polozkaMenicka->setJidla($this);
-        }
+        $this->polozkaMenicka->add($polozkaMenicka);
 
         return $this;
     }
 
-    public function removePolozkaMenicka(PolozkaMenicka $polozkaMenickaKOdstraneni): self
+    public function removePolozkaMenicka(PolozkaMenicka $polozkaMenicka): self
     {
-        if ($this->polozkaMenicka->contains($polozkaMenickaKOdstraneni)) {
-            $this->polozkaMenicka->removeElement($polozkaMenickaKOdstraneni);
-        }
+        $this->polozkaMenicka->removeElement($polozkaMenicka);
 
         return $this;
     }

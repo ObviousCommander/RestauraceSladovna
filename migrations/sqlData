@@ -1,0 +1,233 @@
+ALTER TABLE Rezervace_PolozkaMenicka 
+ADD COLUMN pocet INT NOT NULL;
+
+--predposledni
+INSERT INTO stoly (ID) VALUES (NULL), (NULL), (NULL), (NULL), (NULL);
+INSERT INTO menicka (id, datum) VALUES 
+        (NULL, '2024-07-10'),
+        (NULL, '2024-07-11'),
+        (NULL, '2024-07-12'),
+        (NULL, '2024-07-13'),
+        (NULL, '2024-07-14');
+        
+INSERT INTO jidla (id, nazev, cena) VALUES
+        (NULL, 'Kuřecí řízek s bramborovým salátem', 180),
+        (NULL, 'Vepřová pečeně s knedlíkem a zelím', 190),
+        (NULL, 'Hovězí guláš s houskovým knedlíkem', 200),
+        (NULL, 'Smažený sýr s hranolkami a tatarkou', 160),
+        (NULL, 'Špagety Carbonara', 150),
+        (NULL, 'Lasagne Bolognese', 170),
+        (NULL, 'Caesar salát s kuřecím masem', 140),
+        (NULL, 'Grilovaný losos s pečenými bramborami', 220),
+        (NULL, 'Pizza Margherita', 130),
+        (NULL, 'Pizza Quattro Formaggi', 150),
+        (NULL, 'Tatarák s topinkami', 180),
+        (NULL, 'Risotto s houbami', 160),
+        (NULL, 'Thajské kuřecí kari s rýží', 200),
+        (NULL, 'Vegetariánský burger s hranolkami', 140),
+        (NULL, 'Krémová česneková polévka', 90);
+        
+INSERT INTO polozka_menicka (id, menicka_id, jidla_id) VALUES
+        (NULL, 1, 1), 
+        (NULL, 1, 2), 
+        (NULL, 1, 3), 
+        (NULL, 2, 4), 
+        (NULL, 2, 5), 
+        (NULL, 2, 6),  
+        (NULL, 3, 7),  
+        (NULL, 3, 8),  
+        (NULL, 3, 9), 
+        (NULL, 4, 10),
+        (NULL, 4, 11),
+        (NULL, 4, 12), 
+        (NULL, 5, 13), 
+        (NULL, 5, 14), 
+        (NULL, 5, 15);
+
+INSERT INTO admini (id, jmeno, heslo) VALUES 
+(NULL, 'admin1', 'heslo1'),
+(NULL, 'admin2', 'heslo2'),
+(NULL, 'admin3', 'heslo3');
+
+INSERT INTO rezervace (id, jmeno, datum, mail, tel, pocet_lidi) VALUES 
+ -- 2024-07-10
+ (NULL, 'Jan Novak', '2024-07-10 11:00:00', 'jan.novak@example.com', '123456789', 4),
+ (NULL, 'Petr Svoboda', '2024-07-10 11:30:00', 'petr.svoboda@example.com', '987654321', 3),
+ (NULL, 'Anna Králová', '2024-07-10 12:00:00', 'anna.kralova@example.com', '555666777', 5),
+ (NULL, 'Marek Dvořák', '2024-07-10 12:30:00', 'marek.dvorak@example.com', '777888999', 6),
+ (NULL, 'Eva Horáková', '2024-07-10 13:00:00', 'eva.horakova@example.com', '444555666', 7),
+ (NULL, 'Jakub Zelený', '2024-07-10 11:00:00', 'jakub.zeleny@example.com', '333444555', 8),
+ (NULL, 'Petra Němcová', '2024-07-10 11:30:00', 'petra.nemcova@example.com', '222333444', 4),
+ (NULL, 'Tomáš Veselý', '2024-07-10 12:00:00', 'tomas.vesely@example.com', '111222333', 5),
+ (NULL, 'Lucie Novotná', '2024-07-10 12:30:00', 'lucie.novotna@example.com', '999888777', 3),
+ (NULL, 'David Krejčí', '2024-07-10 13:00:00', 'david.krejci@example.com', '888777666', 6),
+ 
+ -- 2024-07-11
+ (NULL, 'Martin Procházka', '2024-07-11 11:00:00', 'martin.prochazka@example.com', '123456789', 4),
+ (NULL, 'Pavel Nový', '2024-07-11 11:30:00', 'pavel.novy@example.com', '987654321', 3),
+ (NULL, 'Barbora Kovářová', '2024-07-11 12:00:00', 'barbora.kovarova@example.com', '555666777', 5),
+ (NULL, 'Tomáš Urban', '2024-07-11 12:30:00', 'tomas.urban@example.com', '777888999', 6),
+ (NULL, 'Jana Malá', '2024-07-11 13:00:00', 'jana.mala@example.com', '444555666', 7),
+ (NULL, 'Karel Novák', '2024-07-11 11:00:00', 'karel.novak@example.com', '333444555', 8),
+ (NULL, 'Andrea Holá', '2024-07-11 11:30:00', 'andrea.hola@example.com', '222333444', 4),
+ (NULL, 'Daniel Růžička', '2024-07-11 12:00:00', 'daniel.ruzicka@example.com', '111222333', 5),
+ (NULL, 'Kateřina Hrušková', '2024-07-11 12:30:00', 'katerina.hruskova@example.com', '999888777', 3),
+ (NULL, 'Jiří Marek', '2024-07-11 13:00:00', 'jiri.marek@example.com', '888777666', 6),
+ 
+ -- 2024-07-12
+ (NULL, 'Nikola Veselá', '2024-07-12 11:00:00', 'nikola.vesela@example.com', '123456789', 4),
+ (NULL, 'Ivana Nováková', '2024-07-12 11:30:00', 'ivana.novakova@example.com', '987654321', 3),
+ (NULL, 'David Černý', '2024-07-12 12:00:00', 'david.cerny@example.com', '555666777', 5),
+ (NULL, 'Lukáš Vacek', '2024-07-12 12:30:00', 'lukas.vacek@example.com', '777888999', 6),
+ (NULL, 'Romana Horáková', '2024-07-12 13:00:00', 'romana.horakova@example.com', '444555666', 7),
+ (NULL, 'Robert Ševčík', '2024-07-12 11:00:00', 'robert.sevcik@example.com', '333444555', 8),
+ (NULL, 'Petra Pavlová', '2024-07-12 11:30:00', 'petra.pavlova@example.com', '222333444', 4),
+ (NULL, 'Roman Valenta', '2024-07-12 12:00:00', 'roman.valenta@example.com', '111222333', 5),
+ (NULL, 'Marie Pospíšilová', '2024-07-12 12:30:00', 'marie.pospisilova@example.com', '999888777', 3),
+ (NULL, 'Adam Svoboda', '2024-07-12 13:00:00', 'adam.svoboda@example.com', '888777666', 6),
+ 
+ -- 2024-07-13
+ (NULL, 'Monika Kučerová', '2024-07-13 11:00:00', 'monika.kucerova@example.com', '123456789', 4),
+ (NULL, 'Milan Malý', '2024-07-13 11:30:00', 'milan.maly@example.com', '987654321', 3),
+ (NULL, 'Veronika Kolářová', '2024-07-13 12:00:00', 'veronika.kolarova@example.com', '555666777', 5),
+ (NULL, 'Daniela Novotná', '2024-07-13 12:30:00', 'daniela.novotna@example.com', '777888999', 6),
+ (NULL, 'Ondřej Král', '2024-07-13 13:00:00', 'ondrej.kral@example.com', '444555666', 7),
+ (NULL, 'Tereza Dvořáková', '2024-07-13 11:00:00', 'tereza.dvorakova@example.com', '333444555', 8),
+ (NULL, 'Patrik Fiala', '2024-07-13 11:30:00', 'patrik.fiala@example.com', '222333444', 4),
+ (NULL, 'Sandra Veselá', '2024-07-13 12:00:00', 'sandra.vesela@example.com', '111222333', 5),
+ (NULL, 'Filip Kučera', '2024-07-13 12:30:00', 'filip.kucera@example.com', '999888777', 3),
+ (NULL, 'Michaela Němcová', '2024-07-13 13:00:00', 'michaela.nemcova@example.com', '888777666', 6),
+ 
+ -- 2024-07-14
+ (NULL, 'Václav Havel', '2024-07-14 11:00:00', 'vaclav.havel@example.com', '123456789', 4),
+ (NULL, 'Lukáš Novotný', '2024-07-14 11:30:00', 'lukas.novotny@example.com', '987654321', 3),
+ (NULL, 'Zdeněk Malý', '2024-07-14 12:00:00', 'zdenek.maly@example.com', '555666777', 5),
+ (NULL, 'Karel Veselý', '2024-07-14 12:30:00', 'karel.vesely@example.com', '777888999', 6),
+ (NULL, 'Jitka Kučerová', '2024-07-14 13:00:00', 'jitka.kucerova@example.com', '444555666', 7),
+ (NULL, 'Pavla Svobodová', '2024-07-14 11:00:00', 'pavla.svobodova@example.com', '333444555', 8),
+ (NULL, 'Roman Veselý', '2024-07-14 11:30:00', 'roman.vesely@example.com', '222333444', 4),
+ (NULL, 'Gabriela Malá', '2024-07-14 12:00:00', 'gabriela.mala@example.com', '111222333', 5),
+ (NULL, 'Lenka Černá', '2024-07-14 12:30:00', 'lenka.cerna@example.com', '999888777', 3),
+ (NULL, 'Matěj Procházka', '2024-07-14 13:00:00', 'matej.prochazka@example.com', '888777666', 6);
+
+INSERT INTO Rezervace_Stoly (rezervace_id, stoly_id) VALUES
+-- 2024-07-10
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4), (4, 5),
+(5, 6), (5, 7),
+(6, 8), (6, 1),
+(7, 2),
+(8, 3),
+(9, 4),
+(10, 5), (10, 6),
+
+-- 2024-07-11
+(11, 1),
+(12, 2),
+(13, 3),
+(14, 4), (14, 5),
+(15, 6), (15, 7),
+(16, 8), (16, 1),
+(17, 2),
+(18, 3),
+(19, 4),
+(20, 5), (20, 6),
+
+-- 2024-07-12
+(21, 1),
+(22, 2),
+(23, 3),
+(24, 4), (24, 5),
+(25, 6), (25, 7),
+(26, 8), (26, 1),
+(27, 2),
+(28, 3),
+(29, 4),
+(30, 5), (30, 6),
+
+-- 2024-07-13
+(31, 1),
+(32, 2),
+(33, 3),
+(34, 4), (34, 5),
+(35, 6), (35, 7),
+(36, 8), (36, 1),
+(37, 2),
+(38, 3),
+(39, 4),
+(40, 5), (40, 6),
+
+-- 2024-07-14
+(41, 1),
+(42, 2),
+(43, 3),
+(44, 4), (44, 5),
+(45, 6), (45, 7),
+(46, 8), (46, 1),
+(47, 2),
+(48, 3),
+(49, 4),
+(50, 5), (50, 6);
+
+INSERT INTO Rezervace_PolozkaMenicka (rezervace_id, polozka_menicka_id, pocet) VALUES
+-- 2024-07-10
+(1, 1, 2), (1, 2, 2),
+(2, 4, 3),
+(3, 7, 3), (3, 8, 2),
+(4, 10, 3), (4, 11, 3),
+(5, 13, 4), (5, 14, 3),
+(6, 1, 4), (6, 2, 4),
+(7, 4, 2), (7, 5, 2),
+(8, 7, 3), (8, 8, 2),
+(9, 10, 3),
+(10, 13, 3), (10, 14, 3),
+
+-- 2024-07-11
+(11, 1, 2), (11, 2, 2),
+(12, 4, 3),
+(13, 7, 3), (13, 8, 2),
+(14, 10, 3), (14, 11, 3),
+(15, 13, 4), (15, 14, 3),
+(16, 1, 4), (16, 2, 4),
+(17, 4, 2), (17, 5, 2),
+(18, 7, 3), (18, 8, 2),
+(19, 10, 3),
+(20, 13, 3), (20, 14, 3),
+
+-- 2024-07-12
+(21, 1, 2), (21, 2, 2),
+(22, 4, 3),
+(23, 7, 3), (23, 8, 2),
+(24, 10, 3), (24, 11, 3),
+(25, 13, 4), (25, 14, 3),
+(26, 1, 4), (26, 2, 4),
+(27, 4, 2), (27, 5, 2),
+(28, 7, 3), (28, 8, 2),
+(29, 10, 3),
+(30, 13, 3), (30, 14, 3),
+
+-- 2024-07-13
+(31, 1, 2), (31, 2, 2),
+(32, 4, 3),
+(33, 7, 3), (33, 8, 2),
+(34, 10, 3), (34, 11, 3),
+(35, 13, 4), (35, 14, 3),
+(36, 1, 4), (36, 2, 4),
+(37, 4, 2), (37, 5, 2),
+(38, 7, 3), (38, 8, 2),
+(39, 10, 3),
+(40, 13, 3), (40, 14, 3),
+
+-- 2024-07-14
+(41, 1, 2), (41, 2, 2),
+(42, 4, 3),
+(43, 7, 3), (43, 8, 2),
+(44, 10, 3), (44, 11, 3),
+(45, 13, 4), (45, 14, 3),
+(46, 1, 4), (46, 2, 4),
+(47, 4, 2), (47, 5, 2),
+(48, 7, 3), (48, 8, 2),
+(49, 10, 3),
+(50, 13, 3), (50, 14, 3);
