@@ -54,7 +54,7 @@ class JidlaController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $jidlaDto = $form->getData();
-            $this->facade->create($jidlaDto, $id); // předáváme id
+            $this->facade->create($jidlaDto, $id);
             return $this->redirectToRoute('app_jidla');
         }
 

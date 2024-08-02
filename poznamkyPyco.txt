@@ -15,13 +15,21 @@
 ----Nefunguje----
 
 --Edit meníčka--
-Špatný formát či co
-
 
 ----Pracuji na----
+
+--Edit meníčka--
+
+--Pridani vice polozek--
+
 
 ----Bude----
 
 --Rezervace - celá--
 
 --Oprava editu meníčka--
+
+
+----Poznámky k projektu----
+
+Znázornění vazeb + tabulek -> diagram.png
