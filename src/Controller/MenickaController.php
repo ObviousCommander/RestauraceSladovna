@@ -2,34 +2,26 @@
 
 namespace App\Controller;
 
+use App\DTO\MenickaDto;
+use App\Facade\MenickaFacade;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\MenickaRepository;
-use App\Repository\JidlaRepository;
-use App\Repository\PolozkaMenickaRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\Menicka;
 use App\Form\MenickaType;
 
 class MenickaController extends AbstractController
 {
     private MenickaRepository $menickaRepository;
-    private JidlaRepository $jidlaRepository;
-    private PolozkaMenickaRepository $polozkyRepository;
-    private EntityManagerInterface $entityManager;
+    private MenickaFacade $facade;
 
     public function __construct(
         MenickaRepository $menickaRepository,
-        JidlaRepository $jidlaRepository,
-        PolozkaMenickaRepository $polozkyRepository,
-        EntityManagerInterface $entityManager
+        MenickaFacade $facade
     ) {
         $this->menickaRepository = $menickaRepository;
-        $this->jidlaRepository = $jidlaRepository;
-        $this->polozkyRepository = $polozkyRepository;
-        $this->entityManager = $entityManager;
+        $this->facade = $facade;
     }
 
     #[Route('/menicka', name: 'app_menicka')]
@@ -40,27 +32,49 @@ class MenickaController extends AbstractController
         return $this->render('menicka/index.html.twig', [
             'controller_name' => 'MenickaController',
             'data' => $aktualniMenicka,
+            'admin' => true
         ]);
     }
 
-    #[Route('/menicka/new', name: 'menicka_new')]
-    public function new(Request $request): Response
+    #[Route('/menicka/new/{id}', name: 'menicka_new', defaults: ['id' => null])]
+    public function new(Request $request, ?int $id): Response
     {
-        $menicka = new Menicka();
-        $form = $this->createForm(MenickaType::class, $menicka);
+        $menickaDto = new MenickaDto();
+
+        if ($id != null){
+            $menicka = $this->menickaRepository->find($id);
+
+            if (!$menicka) 
+                throw $this->createNotFoundException('Menicko nenalezeno');
+            
+        }
+        $form = $this->createForm(MenickaType::class, $menickaDto);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Uložení nového menu
-            $this->entityManager->persist($menicka);
-            $this->entityManager->flush();
-
-            return $this->redirectToRoute('/');
+            $menickaDto = $form->getData();
+            $this->facade->create($menickaDto, null);
+            return $this->redirectToRoute('app_menicka');
         }
 
         return $this->render('menicka/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
+    #[Route('/menicka/remove/{id}', name: 'menicka_remove')]
+    public function remove(Request $request, int $id): Response
+    {
+        $this->facade->remove($id);
+        $this->addFlash("success", "Menicko odebráno");
+        return $this->redirectToRoute('app_menicka');
+    }
+    #[Route('/menicka/removePolozka/{id}', name: 'menicka_polozka_remove')]
+    public function removePolozkaMenicka(Request $request, int $id): Response
+    {
+        $this->facade->removePolozka($id);
+        $this->addFlash("success", "Položka odebrána");
+        return $this->redirectToRoute('app_menicka');
+    }
+
 }

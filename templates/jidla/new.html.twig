@@ -1,0 +1,16 @@
+{# templates/menicka/new.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Nové Menu{% endblock %}
+
+{% block body %}
+    <h1>Nové Menu</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.nazev, {'label': 'Název jídla'}) }}
+        {{ form_row(form.cena, {'label': 'Cena'}) }}
+        {{ form_row(form._token) }}
+        
+        <button class="btn btn-primary">Uložit</button>
+    {{ form_end(form) }}
+{% endblock %}

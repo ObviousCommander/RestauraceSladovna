@@ -1,0 +1,27 @@
+----Funguje----
+
+--Zobrazení meníček--
+//Až na tlačítka, funkce fungují, jen nejsou linknutý
+
+--Add/remove meníčka--
+
+--Add/remove položek na meníčku--
+
+--Add/remove/edit jídla--
+
+--Add/remove stolů--
+
+
+----Nefunguje----
+
+--Edit meníčka--
+Špatný formát či co
+
+
+----Pracuji na----
+
+----Bude----
+
+--Rezervace - celá--
+
+--Oprava editu meníčka--

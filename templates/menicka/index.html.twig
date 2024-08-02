@@ -6,15 +6,12 @@
 {% endblock %}
 
 {% block body %}
-	{% dump(data) %}
-
-
 	<h1>Aktualni Menicka</h1>
 	<ul>
 		{% for menicka in data %}
 			<li>
 				<strong>ID:</strong>
-				{{ menicka.id }}<br>
+								{{ menicka.id }}<br>
 				<strong>Datum:</strong>
 				{{ menicka.datum|date('Y-m-d') }}<br>
 				<strong>Polozky:</strong>
@@ -22,9 +19,16 @@
 					{% for polozka in menicka.polozkaMenicka %}
 						<li>{{ polozka.jidla.nazev }}
 							(Cena:
-							{{ polozka.jidla.cena }})</li>
+							{{ polozka.jidla.cena }})
+							(ID:
+							{{ polozka.id }})
+							</li>
+							<button onClick="remove({{ polozka.id }})">Remove</button>
 					{% endfor %}
 				</ul>
+					<strong>Správa: </strong>
+					<button onClick="edit({{ menicka.id }})">Edit</button>
+					<button onClick="remove({{ menicka.id }})">Odebrat</button>
 			</li>
 		{% endfor %}
 	</ul>

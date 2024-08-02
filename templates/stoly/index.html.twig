@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seznam jídel{% endblock %}
+
+{% block body %}
+    <h1>Seznam jídel</h1>
+        <button onclick="add()">Přidat</button>
+
+    <ul>
+        {% for stoly in data %}
+            <li>
+                <strong>ID:</strong> {{ stoly.id }}<br>
+                <button onclick="remove({{ stoly.id }})">Odebrat</button>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

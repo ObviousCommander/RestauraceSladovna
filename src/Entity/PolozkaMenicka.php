@@ -56,9 +56,9 @@ class PolozkaMenicka
         return $this->jidla;
     }
 
-    public function setJidla(Jidla $jidlo): self
+    public function setJidla(Jidla $jidla): self
     {
-        $this->jidlo = $jidlo;
+        $this->jidla = $jidla;
 
         return $this;
     }

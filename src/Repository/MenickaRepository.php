@@ -37,9 +37,9 @@ class MenickaRepository extends ServiceEntityRepository
         $entityManager->persist($menicko);
         $entityManager->flush();
     }
-    public function removePodleDatumu(\DateTimeInterface $datum): ?Menicka
+    public function remove(int $id): ?Menicka
     {
-        $menicko = $this->findOneBy(['datum' => $datum]);
+        $menicko = $this->findOneBy(['id' => $id]);
         if ($menicko) {
             $entityManager = $this->getEntityManager();
             $entityManager->remove($menicko);
